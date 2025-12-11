@@ -90,6 +90,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     return Scaffold(
       body: Container(
+        alignment: Alignment.center,
         width: double.infinity,
         height: double.infinity,
         child: AnimatedBuilder(

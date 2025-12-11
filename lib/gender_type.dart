@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
 
-class GenderType extends StatefulWidget {
-  final dynamic genderType;
+class GenderCard extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  final dynamic icon;
+  const GenderCard({
+    required this.label,
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+  });
 
-  const GenderType({Key? key, required this.genderType, required this.icon})
-    : super(key: key);
-
-  @override
-  _GenderTypeState createState() => _GenderTypeState();
-}
-
-class _GenderTypeState extends State<GenderType> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Color.fromRGBO(51, 50, 68, 1),
-      child: InkWell(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: .center,
-            mainAxisAlignment: .center,
-            mainAxisSize: .min,
-            children: [
-              Icon(
-                widget.icon,
-                size: 96,
-                color: Color.fromRGBO(255, 255, 255, 1.0),
-              ),
-              Text(
-                widget.genderType,
-                style: TextStyle(color: Color.fromRGBO(139, 140, 158, 1)),
-              ),
-            ],
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: isSelected ? const Color(0xFF333244) : const Color(0xFF1D1E33),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 60),
+            const SizedBox(height: 12),
+            Text(
+              label.toUpperCase(),
+              style: const TextStyle(fontSize: 16, letterSpacing: 1.3),
+            ),
+          ],
         ),
       ),
     );
