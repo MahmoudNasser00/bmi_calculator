@@ -14,10 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF111328),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF111328),
-          elevation: 0,
-        ),
       ),
       home: const SplashScreen(),
     );
